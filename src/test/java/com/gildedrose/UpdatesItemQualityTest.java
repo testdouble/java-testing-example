@@ -151,7 +151,7 @@ public class UpdatesItemQualityTest {
     assertThat(item.quality, is(50));
   }
 
-  @Test // @Ignore
+  @Test 
   public void conjuredStuffDecreasesAndQualityDoesNotDecreaseBelowZero() {
     Item item = new Item("Conjured", 5, 1);
 
@@ -160,7 +160,7 @@ public class UpdatesItemQualityTest {
     assertThat(item.quality, is(0));
   }
 
-  @Test // @Ignore
+  @Test 
   public void conjuredStuffDecreasesTwoPerNight() {
     Item item = new Item("Conjured", 5, 40);
 
@@ -169,7 +169,7 @@ public class UpdatesItemQualityTest {
     assertThat(item.quality, is(38));
   }
 
-  @Test // @Ignore
+  @Test 
   public void conjuredStuffDecreasesFourWhenSellInIsNegative() {
     Item item = new Item("Conjured", -5, 40);
 

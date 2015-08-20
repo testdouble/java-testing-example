@@ -2,6 +2,24 @@ package com.gildedrose;
 
 public class UpdatesItemQuality {
 
+  /*
+   * for each type of item, these things influence nightly changes:
+   *   - sellIn value
+   *   
+   * type & sell-in is what matters…
+   * 
+   * currently type is represented by a string, which suggests primitive obsession
+   * 
+   * QualityUpdaterFactory returns a QualityUpdater based on name 
+   * 
+   * one quality updater for each type, all with one interface
+   * 
+   * 
+   * bonus:
+   *  - would love to get rid of mutation and return new items instead
+   *  - need a test around the gilded rose object (can be mockito
+   */
+  
   public static void updateItem(Item item) {
     int qualityDecreaseAmount;
     if(item.name == "Conjured") {
