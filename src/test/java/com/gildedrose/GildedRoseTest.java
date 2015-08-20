@@ -1,15 +1,15 @@
 package com.gildedrose;
 
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.*;
-import org.mockito.Mockito;
-import org.mockito.InjectMocks;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.junit.runner.RunWith;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GildedRoseTest {
@@ -26,10 +26,15 @@ public class GildedRoseTest {
   }
 
   @Test
-  public void test() {    
+  public void test() {
+    Item newItem0 = mock(Item.class);
+    Item newItem1 = mock(Item.class);
+    when(updatesItemQuality.updateItem(items[0])).thenReturn(newItem0);
+    when(updatesItemQuality.updateItem(items[1])).thenReturn(newItem1);
+    
     subject.updateQuality();
     
-    verify(updatesItemQuality).updateItem(items[0]);
-    verify(updatesItemQuality).updateItem(items[1]);
+    assertThat(items[0], is(newItem0));
+    assertThat(items[1], is(newItem1));
   }
 }

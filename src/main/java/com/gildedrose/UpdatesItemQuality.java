@@ -1,11 +1,6 @@
 package com.gildedrose;
 
 public class UpdatesItemQuality {
-
-  /*
-   * bonus:
-   *  - would love to get rid of mutation and return new items instead
-   */
   
   public class UpdatesItemsFactory {
     public UpdatesItem updaterFor(Item item) { 
@@ -37,9 +32,6 @@ public class UpdatesItemQuality {
         newQuality = item.quality - 2;
       }
       
-      //TODO obviate this mutation by using the return value
-      item.quality = Math.max(newQuality, 0);
-      item.sellIn -= 1;
       return new Item(item.name, item.sellIn - 1, Math.max(newQuality, 0));
     }    
   }
@@ -53,9 +45,6 @@ public class UpdatesItemQuality {
         newQuality = item.quality + 2;
       }
       
-      //TODO obviate this mutation by using the return value
-      item.quality = Math.min(newQuality, 50);
-      item.sellIn -= 1;
       return new Item(item.name, item.sellIn - 1, Math.min(newQuality, 50));
     }    
   }
@@ -79,9 +68,6 @@ public class UpdatesItemQuality {
         newQuality = item.quality + 1;
       }
               
-      //TODO obviate this mutation by using the return value
-      item.quality = Math.min(newQuality, 50);
-      item.sellIn -= 1;
       return new Item(item.name, item.sellIn - 1, Math.min(newQuality, 50));
     }    
   }
@@ -95,9 +81,6 @@ public class UpdatesItemQuality {
         newQuality = item.quality - 4;
       }
       
-      //TODO obviate this mutation by using the return value
-      item.quality = Math.max(newQuality, 0);
-      item.sellIn -= 1;
       return new Item(item.name, item.sellIn - 1, Math.max(newQuality, 0));
     }    
   }
