@@ -3,10 +3,17 @@ package com.gildedrose;
 public class UpdatesItemQuality {
 
   public static void updateItem(Item item) {
+    int qualityDecreaseAmount;
+    if(item.name == "Conjured") {
+      qualityDecreaseAmount = 2;
+    } else {
+      qualityDecreaseAmount = 1;
+    }
+    
     if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
       if (item.quality > 0) {
         if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-          item.quality = item.quality - 1;
+          item.quality = item.quality - qualityDecreaseAmount;
         }
       }
     } else {
@@ -38,7 +45,7 @@ public class UpdatesItemQuality {
         if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
           if (item.quality > 0) {
             if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-              item.quality = item.quality - 1;
+              item.quality = item.quality - qualityDecreaseAmount;
             }
           }
         } else {
@@ -49,6 +56,10 @@ public class UpdatesItemQuality {
           item.quality = item.quality + 1;
         }
       }
+    }
+    
+    if(item.quality < 0) {
+      item.quality = 0;
     }
   }
 
