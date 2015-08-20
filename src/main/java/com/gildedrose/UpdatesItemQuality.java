@@ -3,82 +3,109 @@ package com.gildedrose;
 public class UpdatesItemQuality {
 
   /*
-   * for each type of item, these things influence nightly changes:
-   *   - sellIn value
-   *   
-   * type & sell-in is what matters…
-   * 
-   * currently type is represented by a string, which suggests primitive obsession
-   * 
-   * QualityUpdaterFactory returns a QualityUpdater based on name 
-   * 
-   * one quality updater for each type, all with one interface
-   * 
-   * 
    * bonus:
    *  - would love to get rid of mutation and return new items instead
-   *  - need a test around the gilded rose object (can be mockito
    */
   
-  public void updateItem(Item item) {
-    int qualityDecreaseAmount;
-    if(item.name == "Conjured") {
-      qualityDecreaseAmount = 2;
-    } else {
-      qualityDecreaseAmount = 1;
-    }
-    
-    if (!item.name.equals("Aged Brie") && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-      if (item.quality > 0) {
-        if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-          item.quality = item.quality - qualityDecreaseAmount;
-        }
-      }
-    } else {
-      if (item.quality < 50) {
-        item.quality = item.quality + 1;
-  
-        if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-          if (item.sellIn < 11) {
-            if (item.quality < 50) {
-              item.quality = item.quality + 1;
-            }
-          }
-  
-          if (item.sellIn < 6) {
-            if (item.quality < 50) {
-              item.quality = item.quality + 1;
-            }
-          }
-        }
-      }
-    }
-  
-    if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-      item.sellIn = item.sellIn - 1;
-    }
-  
-    if (item.sellIn < 0) {
-      if (!item.name.equals("Aged Brie")) {
-        if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-          if (item.quality > 0) {
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
-              item.quality = item.quality - qualityDecreaseAmount;
-            }
-          }
-        } else {
-          item.quality = 0;
-        }
+  public class UpdatesItemsFactory {
+    public UpdatesItem updaterFor(Item item) { 
+      if(item.name == "Backstage passes to a TAFKAL80ETC concert") {
+        return new UpdatesSpecialEventItem();
+      } else if(item.name == "Aged Brie") { 
+        return new UpdatesQualityIncreasingItem();
+      } else if(item.name == "Sulfuras, Hand of Ragnaros") {
+        return new UpdatesUnchangingItem();
+      } else if(item.name.startsWith("Conjured")) {
+        return new UpdatesConjuredItem();
       } else {
-        if (item.quality < 50) {
-          item.quality = item.quality + 1;
-        }
+        return new UpdatesRegularItem();
       }
     }
     
-    if(item.quality < 0) {
-      item.quality = 0;
-    }
+  }
+  
+  public interface UpdatesItem {
+    public Item update(Item item);
+  }
+  
+  public class UpdatesRegularItem implements UpdatesItem {
+    public Item update(Item item) {
+      int newQuality;
+      if(item.sellIn > 0) {
+        newQuality = item.quality - 1;
+      } else {
+        newQuality = item.quality - 2;
+      }
+      
+      //TODO obviate this mutation by using the return value
+      item.quality = Math.max(newQuality, 0);
+      item.sellIn -= 1;
+      return new Item(item.name, item.sellIn - 1, Math.max(newQuality, 0));
+    }    
+  }
+  
+  public class UpdatesQualityIncreasingItem implements UpdatesItem {
+    public Item update(Item item) {
+      int newQuality;
+      if(item.sellIn > 0) {
+        newQuality = item.quality + 1;
+      } else {
+        newQuality = item.quality + 2;
+      }
+      
+      //TODO obviate this mutation by using the return value
+      item.quality = Math.min(newQuality, 50);
+      item.sellIn -= 1;
+      return new Item(item.name, item.sellIn - 1, Math.min(newQuality, 50));
+    }    
+  }
+  
+  public class UpdatesUnchangingItem implements UpdatesItem {
+    public Item update(Item item) {
+      return item;
+    }    
+  }
+  
+  public class UpdatesSpecialEventItem implements UpdatesItem {
+    public Item update(Item item) {
+      int newQuality;
+      if(item.sellIn <= 0) {
+        newQuality = 0;
+      } else if(item.sellIn <= 5) {
+        newQuality = item.quality + 3;
+      } else if(item.sellIn <= 10) {
+        newQuality = item.quality + 2;
+      } else {
+        newQuality = item.quality + 1;
+      }
+              
+      //TODO obviate this mutation by using the return value
+      item.quality = Math.min(newQuality, 50);
+      item.sellIn -= 1;
+      return new Item(item.name, item.sellIn - 1, Math.min(newQuality, 50));
+    }    
+  }
+  
+  public class UpdatesConjuredItem implements UpdatesItem {
+    public Item update(Item item) {
+      int newQuality;
+      if(item.sellIn > 0) {
+        newQuality = item.quality - 2;
+      } else {
+        newQuality = item.quality - 4;
+      }
+      
+      //TODO obviate this mutation by using the return value
+      item.quality = Math.max(newQuality, 0);
+      item.sellIn -= 1;
+      return new Item(item.name, item.sellIn - 1, Math.max(newQuality, 0));
+    }    
+  }
+  
+  UpdatesItemsFactory updatesItemsFactory = new UpdatesItemsFactory();
+  
+  public Item updateItem(Item item) {
+    return updatesItemsFactory.updaterFor(item).update(item);
   }
 
 }
