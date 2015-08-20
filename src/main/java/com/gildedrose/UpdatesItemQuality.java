@@ -20,7 +20,7 @@ public class UpdatesItemQuality {
    *  - need a test around the gilded rose object (can be mockito
    */
   
-  public static void updateItem(Item item) {
+  public void updateItem(Item item) {
     int qualityDecreaseAmount;
     if(item.name == "Conjured") {
       qualityDecreaseAmount = 2;
