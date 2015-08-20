@@ -2,6 +2,23 @@ package com.gildedrose;
 
 public class UpdatesItemQuality {
   
+  public class QualityAdjuster {
+    public int adjust(Item item, int size) {
+      int newQuality;
+      if(item.sellIn > 0) {
+        newQuality = item.quality + size;
+      } else {
+        newQuality = item.quality + (size * 2);
+      }
+      
+      if(size < 0) {
+        return Math.max(newQuality, 0);
+      } else {
+        return Math.min(newQuality, 50);
+      }
+    }
+  }
+  
   public class UpdatesItemsFactory {
     public UpdatesItem updaterFor(Item item) { 
       if(item.name == "Backstage passes to a TAFKAL80ETC concert") {
@@ -25,27 +42,13 @@ public class UpdatesItemQuality {
   
   public class UpdatesRegularItem implements UpdatesItem {
     public Item update(Item item) {
-      int newQuality;
-      if(item.sellIn > 0) {
-        newQuality = item.quality - 1;
-      } else {
-        newQuality = item.quality - 2;
-      }
-      
-      return new Item(item.name, item.sellIn - 1, Math.max(newQuality, 0));
+      return new Item(item.name, item.sellIn - 1, new QualityAdjuster().adjust(item, - 1));
     }    
   }
   
   public class UpdatesQualityIncreasingItem implements UpdatesItem {
     public Item update(Item item) {
-      int newQuality;
-      if(item.sellIn > 0) {
-        newQuality = item.quality + 1;
-      } else {
-        newQuality = item.quality + 2;
-      }
-      
-      return new Item(item.name, item.sellIn - 1, Math.min(newQuality, 50));
+      return new Item(item.name, item.sellIn - 1, new QualityAdjuster().adjust(item, 1));
     }    
   }
   
@@ -74,14 +77,7 @@ public class UpdatesItemQuality {
   
   public class UpdatesConjuredItem implements UpdatesItem {
     public Item update(Item item) {
-      int newQuality;
-      if(item.sellIn > 0) {
-        newQuality = item.quality - 2;
-      } else {
-        newQuality = item.quality - 4;
-      }
-      
-      return new Item(item.name, item.sellIn - 1, Math.max(newQuality, 0));
+      return new Item(item.name, item.sellIn - 1, new QualityAdjuster().adjust(item, -2));
     }    
   }
   
