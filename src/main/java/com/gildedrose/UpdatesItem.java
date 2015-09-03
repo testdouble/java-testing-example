@@ -5,21 +5,21 @@ import java.util.Collection;
 
 public class UpdatesItem {
 
-  public interface NeedsQualityAdjustment {
-    public boolean need(Item item);
+  public interface SellInTest {
+    public boolean need(int sellIn);
   }
   
-  public class RateOfQualityChange {
+  public class QualityChangeRule {
     int amount;
-    NeedsQualityAdjustment test;
+    SellInTest test;
 
-    public RateOfQualityChange(int amount, NeedsQualityAdjustment test) {
+    public QualityChangeRule(int amount, SellInTest test) {
       this.amount = amount;
       this.test = test;
     }
     
     public boolean doesApply(Item item) {
-      return test.need(item);
+      return test.need(item.sellIn);
     }
   }
   
@@ -27,38 +27,38 @@ public class UpdatesItem {
     public Item age(Item item);
   }
   
-  public class AgesItemAtVariableRate implements AgesItem {
-    Collection<RateOfQualityChange> rates;
+  public class AgesItemAtVariableRates implements AgesItem {
+    Collection<QualityChangeRule> rules;
     
-    public AgesItemAtVariableRate(RateOfQualityChange... rates) {
-      this.rates = Arrays.asList(rates);
+    public AgesItemAtVariableRates(QualityChangeRule... rates) {
+      this.rules = Arrays.asList(rates);
     }
     
     public Item age(Item item) {
       int newQuality = item.quality;
-      for(RateOfQualityChange rate : rates) {
-        if(rate.doesApply(item)) {
-          newQuality += rate.amount;
+      for(QualityChangeRule rule : rules) {
+        if(rule.doesApply(item)) {
+          newQuality += rule.amount;
         }
       }
       return new Item(item.name, item.sellIn - 1, Math.min(Math.max(newQuality, 0), 50));
     }
   }
   
-  public class AgesNormalItem extends AgesItemAtVariableRate {
+  public class AgesNormalItem extends AgesItemAtVariableRates {
     public AgesNormalItem() {
       super(
-        new RateOfQualityChange(-1, (item) -> true),
-        new RateOfQualityChange(-1, (item) -> item.sellIn <= 0)
+        new QualityChangeRule(-1, (sellIn) -> true),
+        new QualityChangeRule(-1, (sellIn) -> sellIn <= 0)
       );
     }
   }
 
-  public class AgesVintageItem extends AgesItemAtVariableRate {
+  public class AgesVintageItem extends AgesItemAtVariableRates {
     public AgesVintageItem() {
       super(
-        new RateOfQualityChange(1, (item) -> true),
-        new RateOfQualityChange(1, (item) -> item.sellIn <= 0)
+        new QualityChangeRule(1, (sellIn) -> true),
+        new QualityChangeRule(1, (sellIn) -> sellIn <= 0)
       );
     }    
   }
