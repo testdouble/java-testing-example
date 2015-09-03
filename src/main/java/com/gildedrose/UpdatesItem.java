@@ -5,21 +5,24 @@ import java.util.Collection;
 
 public class UpdatesItem {
 
-  public interface SellInTest {
-    public boolean need(int sellIn);
-  }
   
-  public class QualityChangeRule {
-    int amount;
-    SellInTest test;
+  public Item update(Item item) {
+    return new ProvidesAgesItem().provide(item.name).age(item);
+  }
 
-    public QualityChangeRule(int amount, SellInTest test) {
-      this.amount = amount;
-      this.test = test;
-    }
-    
-    public boolean doesApply(Item item) {
-      return test.need(item.sellIn);
+  public class ProvidesAgesItem {
+    public AgesItem provide(String name) {
+      if(name == "Backstage passes to a TAFKAL80ETC concert") {
+        return new AgesSpecialEventItem();
+      } else if(name == "Aged Brie") {
+        return new AgesVintageItem();
+      } else if(name == "Sulfuras, Hand of Ragnaros") {
+        return new AgesImmutableItem();
+      } else if(name.startsWith("Conjured")) {
+        return new AgesConjuredItem();
+      } else {
+        return new AgesNormalItem();
+      }
     }
   }
   
@@ -89,24 +92,21 @@ public class UpdatesItem {
     }
   }
   
-  public class ProvidesAgesItem {
-    public AgesItem provide(String name) {
-      if(name == "Backstage passes to a TAFKAL80ETC concert") {
-        return new AgesSpecialEventItem();
-      } else if(name == "Aged Brie") {
-        return new AgesVintageItem();
-      } else if(name == "Sulfuras, Hand of Ragnaros") {
-        return new AgesImmutableItem();
-      } else if(name.startsWith("Conjured")) {
-        return new AgesConjuredItem();
-      } else {
-        return new AgesNormalItem();
-      }
+  public class QualityChangeRule {
+    int amount;
+    SellInTest test;
+
+    public QualityChangeRule(int amount, SellInTest test) {
+      this.amount = amount;
+      this.test = test;
+    }
+    
+    public boolean doesApply(Item item) {
+      return test.need(item.sellIn);
     }
   }
   
-  public Item update(Item item) {
-    return new ProvidesAgesItem().provide(item.name).age(item);
+  public interface SellInTest {
+    public boolean need(int sellIn);
   }
-
 }
