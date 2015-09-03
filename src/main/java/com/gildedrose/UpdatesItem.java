@@ -63,21 +63,15 @@ public class UpdatesItem {
     }    
   }
 
-  public class AgesSpecialEventItem implements AgesItem {
-    public Item age(Item item) {
-      int newQuality;
-      if(item.sellIn <= 0) {
-        newQuality = 0;
-      } else if(item.sellIn <= 5) {
-        newQuality = item.quality + 3;
-      } else if(item.sellIn <= 10) {
-        newQuality = item.quality + 2;
-      } else {
-        newQuality = item.quality + 1;
-      }
-      
-      return new Item(item.name, item.sellIn - 1, Math.min(newQuality, 50));
-    }
+  public class AgesSpecialEventItem extends AgesItemAtVariableRates {
+    public AgesSpecialEventItem() {
+      super(
+        new QualityChangeRule(1, (sellIn) -> true),
+        new QualityChangeRule(1, (sellIn) -> sellIn <= 10),
+        new QualityChangeRule(1, (sellIn) -> sellIn <= 5),
+        new QualityChangeRule(-1000000, (sellIn) -> sellIn <= 0)
+      );
+    }    
   }
   
   public class AgesImmutableItem implements AgesItem {
