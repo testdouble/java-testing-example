@@ -23,9 +23,7 @@ public class UpdatesItem {
         newQuality = item.quality + (rate * 2);
       }
       
-      item.sellIn--;
-      item.quality = Math.min(Math.max(newQuality, 0), 50);
-      return item;
+      return new Item(item.name, item.sellIn - 1, Math.min(Math.max(newQuality, 0), 50));
     }
   }
   
@@ -54,9 +52,7 @@ public class UpdatesItem {
         newQuality = item.quality + 1;
       }
       
-      item.sellIn--;
-      item.quality = Math.min(newQuality, 50);
-      return item;
+      return new Item(item.name, item.sellIn - 1, Math.min(newQuality, 50));
     }
   }
   
