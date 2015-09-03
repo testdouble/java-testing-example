@@ -3,6 +3,7 @@ package com.gildedrose;
 import java.util.Arrays;
 import java.util.Collection;
 
+// See: https://github.com/testdouble/contributing-tests/wiki/Gilded-Rose-Kata
 public class UpdatesItem {
 
   public Item update(Item item) {
