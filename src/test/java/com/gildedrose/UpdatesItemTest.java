@@ -192,8 +192,25 @@ public class UpdatesItemTest {
     assertThat(result.sellIn, is(-1));
   }
   
+  @Test
+  public void conjuredItemDecreasesAtDoubleRate() {
+    Item item = new Item("Conjured foo", 20, 20);
+
+    Item result = subject.update(item);
+
+    assertThat(result.quality, is(18));
+    assertThat(result.sellIn, is(19));
+  }
   
-  
+  @Test
+  public void conjuredItemDecreasesAtQuadrupleRateWhenBelowZero() {
+    Item item = new Item("Conjured foo", 0, 20);
+
+    Item result = subject.update(item);
+
+    assertThat(result.quality, is(16));
+    assertThat(result.sellIn, is(-1));
+  }
   
   
   

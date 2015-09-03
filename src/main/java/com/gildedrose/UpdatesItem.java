@@ -80,6 +80,15 @@ public class UpdatesItem {
     }
   }
   
+  public class AgesConjuredItem extends AgesItemAtVariableRates {
+    public AgesConjuredItem() {
+      super(
+        new QualityChangeRule(-2, (sellIn) -> true),
+        new QualityChangeRule(-2, (sellIn) -> sellIn <= 0)
+      );
+    }
+  }
+  
   public class ProvidesAgesItem {
     public AgesItem provide(String name) {
       if(name == "Backstage passes to a TAFKAL80ETC concert") {
@@ -88,6 +97,8 @@ public class UpdatesItem {
         return new AgesVintageItem();
       } else if(name == "Sulfuras, Hand of Ragnaros") {
         return new AgesImmutableItem();
+      } else if(name.startsWith("Conjured")) {
+        return new AgesConjuredItem();
       } else {
         return new AgesNormalItem();
       }
