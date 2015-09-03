@@ -1,6 +1,8 @@
 package com.gildedrose;
 
 import static org.mockito.Mockito.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,14 +22,18 @@ public class GildedRoseTest {
 
   @Test
   public void test() {
-    Item item = new Item("",-1,-1);
-    items[0] = item;
+    Item item1 = new Item("",-1,-1);
+    Item updatedItem1 = new Item("",-1,-1);
+    items[0] = item1;
+    when(updatesItem.updatesItem(item1)).thenReturn(updatedItem1);
     Item item2 = new Item("",-1,-1);
+    Item updatedItem2 = new Item("",-1,-1);
     items[1] = item2;
+    when(updatesItem.updatesItem(item2)).thenReturn(updatedItem2);
     
     subject.updateQuality();
         
-    verify(updatesItem, times(1)).updatesItem(item);
-    verify(updatesItem, times(1)).updatesItem(item2);
+    assertThat(items[0], is(updatedItem1));
+    assertThat(items[1], is(updatedItem2));
   }
 }

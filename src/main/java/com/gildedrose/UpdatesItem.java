@@ -81,8 +81,8 @@ public class UpdatesItem {
   }
   
   
-  public void updatesItem(Item item) {
-    new ItemUpdaterFactory().updaterFor(item.name).update(item);
+  public Item updatesItem(Item item) {
+    return new ItemUpdaterFactory().updaterFor(item.name).update(item);
   }
 
 }
