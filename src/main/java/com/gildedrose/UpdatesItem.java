@@ -1,21 +1,20 @@
 package com.gildedrose;
 
 public class UpdatesItem {
-
   
-  public interface ItemUpdater {
-    public Item update(Item item);
+  public interface AgesItem {
+    public Item age(Item item);
   }
   
-  public class RateOfChangeUpdater implements ItemUpdater {
+  public class AgesItemAtVariableRate implements AgesItem {
     
     int rate;
     
-    public RateOfChangeUpdater(int rate) {
+    public AgesItemAtVariableRate(int rate) {
       this.rate = rate;
     }
     
-    public Item update(Item item) {
+    public Item age(Item item) {
       int newQuality;
       if(item.sellIn > 0) {
         newQuality = item.quality + rate;
@@ -27,20 +26,20 @@ public class UpdatesItem {
     }
   }
   
-  public class NormalItemUpdater extends RateOfChangeUpdater {
-    public NormalItemUpdater() {
+  public class AgesNormalItem extends AgesItemAtVariableRate {
+    public AgesNormalItem() {
       super(-1);
     }
   }
 
-  public class VintageItemUpdater extends RateOfChangeUpdater {
-    public VintageItemUpdater() {
+  public class AgesVintageItem extends AgesItemAtVariableRate {
+    public AgesVintageItem() {
       super(1);
     }    
   }
 
-  public class SpecialEventItemUpdater implements ItemUpdater {
-    public Item update(Item item) {
+  public class AgesSpecialEventItem implements AgesItem {
+    public Item age(Item item) {
       int newQuality;
       if(item.sellIn <= 0) {
         newQuality = 0;
@@ -56,29 +55,28 @@ public class UpdatesItem {
     }
   }
   
-  public class NoOpItemUpdater implements ItemUpdater {
-    public Item update(Item item) {
+  public class AgesImmutableItem implements AgesItem {
+    public Item age(Item item) {
       return item;
     }
   }
   
-  public class ItemUpdaterFactory {
-    public ItemUpdater updaterFor(String name) {
+  public class ProvidesAgesItem {
+    public AgesItem provide(String name) {
       if(name == "Backstage passes to a TAFKAL80ETC concert") {
-        return new SpecialEventItemUpdater();
+        return new AgesSpecialEventItem();
       } else if(name == "Aged Brie") {
-        return new VintageItemUpdater();
+        return new AgesVintageItem();
       } else if(name == "Sulfuras, Hand of Ragnaros") {
-        return new NoOpItemUpdater();
+        return new AgesImmutableItem();
       } else {
-        return new NormalItemUpdater();
+        return new AgesNormalItem();
       }
     }
   }
   
-  
-  public Item updatesItem(Item item) {
-    return new ItemUpdaterFactory().updaterFor(item.name).update(item);
+  public Item update(Item item) {
+    return new ProvidesAgesItem().provide(item.name).age(item);
   }
 
 }
