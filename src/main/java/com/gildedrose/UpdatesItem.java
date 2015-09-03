@@ -1,40 +1,65 @@
 package com.gildedrose;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 public class UpdatesItem {
+
+  public interface NeedsQualityAdjustment {
+    public boolean need(Item item);
+  }
+  
+  public class RateOfQualityChange {
+    int amount;
+    NeedsQualityAdjustment test;
+
+    public RateOfQualityChange(int amount, NeedsQualityAdjustment test) {
+      this.amount = amount;
+      this.test = test;
+    }
+    
+    public boolean doesApply(Item item) {
+      return test.need(item);
+    }
+  }
   
   public interface AgesItem {
     public Item age(Item item);
   }
   
   public class AgesItemAtVariableRate implements AgesItem {
+    Collection<RateOfQualityChange> rates;
     
-    int rate;
-    
-    public AgesItemAtVariableRate(int rate) {
-      this.rate = rate;
+    public AgesItemAtVariableRate(RateOfQualityChange... rates) {
+      this.rates = Arrays.asList(rates);
     }
     
     public Item age(Item item) {
-      int newQuality;
-      if(item.sellIn > 0) {
-        newQuality = item.quality + rate;
-      } else {
-        newQuality = item.quality + (rate * 2);
+      int newQuality = item.quality;
+      for(RateOfQualityChange rate : rates) {
+        if(rate.doesApply(item)) {
+          newQuality += rate.amount;
+        }
       }
-      
       return new Item(item.name, item.sellIn - 1, Math.min(Math.max(newQuality, 0), 50));
     }
   }
   
   public class AgesNormalItem extends AgesItemAtVariableRate {
     public AgesNormalItem() {
-      super(-1);
+      super(
+        new RateOfQualityChange(-1, (item) -> true),
+        new RateOfQualityChange(-1, (item) -> item.sellIn <= 0)
+      );
     }
   }
 
   public class AgesVintageItem extends AgesItemAtVariableRate {
     public AgesVintageItem() {
-      super(1);
+      super(
+        new RateOfQualityChange(1, (item) -> true),
+        new RateOfQualityChange(1, (item) -> item.sellIn <= 0)
+      );
     }    
   }
 
