@@ -16,13 +16,15 @@ public class DeterminesNextContents {
     switch(filter(neighbors, p -> p.contents instanceof Cell).size()) {
       case 2:
         return currentContents;
+      case 3:
+        return new Cell();
       default:
         return new Nothing(); 
     }
   }
 
   private <T> Collection<T> filter(Collection<T> collection, Predicate<? super T> predicate) {
-    return collection.stream().filter(predicate).collect(Collectors.toCollection(ArrayList::new));
+    return collection.stream().filter(predicate).collect(Collectors.toList());
   }
 
 }
