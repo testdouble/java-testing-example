@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import com.conway.values.MutableWorld;
 import com.conway.values.World;
 
 import org.junit.runner.RunWith;

@@ -1,9 +1,4 @@
-package com.conway;
-
-import com.conway.values.Contents;
-import com.conway.values.Coordinates;
-import com.conway.values.Nothing;
-import com.conway.values.World;
+package com.conway.values;
 
 public class MutableWorld extends World {
   public void set(Coordinates coordinates, Contents contents) {

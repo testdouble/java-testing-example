@@ -16,6 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.conway.values.Cell;
 import com.conway.values.Coordinates;
+import com.conway.values.MutableWorld;
 import com.conway.values.Outcome;
 import com.conway.values.Point;
 import com.conway.values.TimeLimit;

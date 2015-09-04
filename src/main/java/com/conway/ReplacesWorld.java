@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import com.conway.values.Coordinates;
+import com.conway.values.MutableWorld;
 import com.conway.values.Outcome;
 import com.conway.values.Point;
 import com.conway.values.TimeLimit;
