@@ -18,7 +18,6 @@ import com.conway.values.Coordinates;
 import com.conway.values.MutableWorld;
 import com.conway.values.Outcome;
 import com.conway.values.Point;
-import com.conway.values.World;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ReplacesCellTest {
@@ -31,12 +30,14 @@ public class ReplacesCellTest {
 
   @Test
   public void test() {
-    World world = new MutableWorld();
+    MutableWorld world = new MutableWorld();    
     Coordinates coordinates = new Coordinates(42,1337);
+    Contents oldContents = new Contents();
+    world.set(coordinates, oldContents);
     Collection<Point> neighbors = new ArrayList<Point>();
     when(gathersNeighbors.gather(world, coordinates)).thenReturn(neighbors);
     Contents nextContents = new Contents();
-    when(determinesNextContents.determine(neighbors)).thenReturn(nextContents);
+    when(determinesNextContents.determine(oldContents, neighbors)).thenReturn(nextContents);
     
     Outcome outcome = subject.replace(world, coordinates);
     

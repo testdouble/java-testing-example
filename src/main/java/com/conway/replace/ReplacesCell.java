@@ -14,7 +14,7 @@ public class ReplacesCell {
   
   public Outcome replace(World world, Coordinates coordinates) {
     Collection<Point> neighbors = gathersNeighbors.gather(world, coordinates);
-    return new Outcome(determinesNextContents.determine(neighbors ), neighbors);
+    return new Outcome(determinesNextContents.determine(world.at(coordinates), neighbors), neighbors);
   }
 
 }
