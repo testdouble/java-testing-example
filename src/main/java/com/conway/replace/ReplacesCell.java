@@ -9,8 +9,8 @@ import com.conway.values.World;
 
 public class ReplacesCell {
 
-  GathersNeighbors gathersNeighbors;
-  DeterminesNextContents determinesNextContents; 
+  GathersNeighbors gathersNeighbors = new GathersNeighbors();
+  DeterminesNextContents determinesNextContents = new DeterminesNextContents(); 
   
   public Outcome replace(World world, Coordinates coordinates) {
     Collection<Point> neighbors = gathersNeighbors.gather(world, coordinates);

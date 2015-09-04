@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class TimeLimit {
 
-  private long limitInMilliseconds;
-  private long startTime;
+  public long limitInMilliseconds;
+  public long startTime;
 
   public TimeLimit(long limitInMilliseconds) {
     this.limitInMilliseconds = limitInMilliseconds;

@@ -1,6 +1,5 @@
 package com.conway.replace;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;

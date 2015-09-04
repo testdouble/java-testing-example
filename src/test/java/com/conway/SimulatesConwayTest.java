@@ -1,11 +1,9 @@
 package com.conway;
 
-import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
-import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
-import org.mockito.Mockito;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -13,8 +11,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.conway.replace.ReplacesWorld;
 import com.conway.values.MutableWorld;
 import com.conway.values.World;
-
-import org.junit.runner.RunWith;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SimulatesConwayTest {

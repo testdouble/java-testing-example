@@ -13,8 +13,8 @@ import com.conway.values.World;
 
 public class ReplacesWorld {
 
-  KeepsTime keepsTime;
-  ReplacesCell replacesCell;
+  KeepsTime keepsTime = new KeepsTime();
+  ReplacesCell replacesCell = new ReplacesCell();
 
   public World replace(World oldWorld, int timeLimitInMs) {
     MutableWorld newWorld = new MutableWorld();
