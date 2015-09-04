@@ -31,19 +31,20 @@ public class SimulatesConwayTest {
     World seedWorld = new World();
     when(generatesSeedWorld.generate()).thenReturn(seedWorld );
     
-    subject.simulate(1);
+    subject.simulate(1, 1337);
     
     verify(outputsWorld).output(seedWorld);
   }
   
   @Test
   public void testTwoRounds() {
+    int timeLimit = 1337;
     World seedWorld = new World();
     when(generatesSeedWorld.generate()).thenReturn(seedWorld );
     World world2 = new World();
-    when(replacesWorld.replace(seedWorld)).thenReturn(world2);
+    when(replacesWorld.replace(seedWorld, timeLimit)).thenReturn(world2);
     
-    subject.simulate(2);
+    subject.simulate(2, timeLimit);
     
     verify(outputsWorld).output(seedWorld);
     verify(outputsWorld).output(world2);

@@ -6,11 +6,11 @@ public class SimulatesConway {
   OutputsWorld outputsWorld = new OutputsWorld();
   ReplacesWorld replacesWorld = new ReplacesWorld();
   
-  public void simulate(int iterations) {
+  public void simulate(int iterations, int timeLimit) {
     World world = generatesSeedWorld.generate();
     for(int i=0; i < iterations; i++) {
       outputsWorld.output(world);
-      world = replacesWorld.replace(world);
+      world = replacesWorld.replace(world, timeLimit);
     }
   }
 
