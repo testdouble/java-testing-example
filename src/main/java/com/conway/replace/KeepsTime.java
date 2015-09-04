@@ -1,4 +1,4 @@
-package com.conway;
+package com.conway.replace;
 
 import com.conway.values.TimeLimit;
 

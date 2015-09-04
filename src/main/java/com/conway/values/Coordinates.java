@@ -33,4 +33,36 @@ public class Coordinates {
     return true;
   }
 
+  public Coordinates topLeft() {
+    return new Coordinates(x-1,y+1);
+  }
+
+  public Coordinates topCenter() {
+    return new Coordinates(x,y+1);
+  }
+
+  public Coordinates topRight() {
+    return new Coordinates(x+1,y+1);
+  }
+
+  public Coordinates middleLeft() {
+    return new Coordinates(x-1,y);
+  }
+  
+  public Coordinates middleRight() {
+    return new Coordinates(x+1,y);
+  }
+  
+  public Coordinates bottomLeft() {
+    return new Coordinates(x-1,y-1);
+  }
+  
+  public Coordinates bottomCenter() {
+    return new Coordinates(x,y-1);
+  }
+  
+  public Coordinates bottomRight() {
+    return new Coordinates(x+1,y-1);
+  }
+
 }

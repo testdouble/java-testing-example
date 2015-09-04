@@ -1,4 +1,4 @@
-package com.conway;
+package com.conway.replace;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -65,6 +65,12 @@ public class ReplacesWorldTest {
     
     assertThat(result.at(new Coordinates(0,0)), is(firstOutcome.nextContents));
     assertThat(result.at(new Coordinates(1,0)), is(secondOutcome.nextContents));
+  }
+  
+  @Test
+  public void doesNotCalculateSameCoordinatesTwice() {
+    //TODO: Right now the same neighbor will get calculated up to 8 times,
+    // we should short-circuit already created ones (flag in the new world?)
   }
 }
 

@@ -1,5 +1,6 @@
 package com.conway;
 
+import com.conway.replace.ReplacesWorld;
 import com.conway.values.World;
 
 public class SimulatesConway {

@@ -1,4 +1,4 @@
-package com.conway;
+package com.conway.replace;
 
 import java.util.Collection;
 
