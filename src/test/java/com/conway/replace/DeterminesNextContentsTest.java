@@ -4,13 +4,11 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 import org.junit.Test;
 
 import com.conway.values.Cell;
-import com.conway.values.Contents;
 import com.conway.values.Nothing;
 import com.conway.values.Point;
 
@@ -18,42 +16,6 @@ public class DeterminesNextContentsTest {
 
   DeterminesNextContents subject = new DeterminesNextContents();
 
-  @Test
-  public void testZeroCells() {
-    Collection<Point> neighbors = neighbors(0);
-    
-    Contents result = subject.determine(new Cell(), neighbors);
-    
-    assertThat(result, instanceOf(Nothing.class));
-  }
-  
-  @Test
-  public void testOneCells() {
-    Collection<Point> neighbors = neighbors(1);
-    
-    Contents result = subject.determine(new Cell(), neighbors);
-    
-    assertThat(result, instanceOf(Nothing.class));
-  }
-  
-  @Test
-  public void testTwoCells() {
-    Collection<Point> neighbors = neighbors(2);
-    
-    Contents result = subject.determine(new Cell(), neighbors);
-    
-    assertThat(result, instanceOf(Cell.class));
-  }
-  
-  @Test
-  public void testThreeNeighborsMakesYouComeAlive() {
-    Collection<Point> neighbors = neighbors(3);
-    
-    Contents result = subject.determine(new Nothing(), neighbors);
-    
-    assertThat(result, instanceOf(Cell.class));
-  }
-  
   @Test
   public void testAllTheNothingCases() {
     assertThat(subject.determine(new Nothing(), neighbors(0)), instanceOf(Nothing.class));
