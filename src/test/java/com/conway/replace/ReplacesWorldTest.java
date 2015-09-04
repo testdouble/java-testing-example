@@ -69,8 +69,14 @@ public class ReplacesWorldTest {
   
   @Test
   public void doesNotCalculateSameCoordinatesTwice() {
-    //TODO: Right now the same neighbor will get calculated up to 8 times,
-    // we should short-circuit already created ones (flag in the new world?)
+    World world = new MutableWorld();
+    when(timeLimit.isTimeUp()).thenReturn(false, false, true); //<-- allow TWO cell replacement
+    Outcome firstOutcome = new Outcome(new Cell(), Arrays.asList(new Point(new Cell(), new Coordinates(0,0))));
+    when(replacesCell.replace(world, new Coordinates(0,0))).thenReturn(firstOutcome);
+    
+    subject.replace(world, SOME_TIME_LIMIT);
+    
+    verify(replacesCell, times(1)).replace(world, new Coordinates(0,0));
   }
 }
 

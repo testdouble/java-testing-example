@@ -12,4 +12,8 @@ public class MutableWorld extends World {
       return new Nothing();
     }
   }
+
+  public boolean notYetSet(Coordinates coordinates) {
+    return !population.containsKey(coordinates);
+  }
 }

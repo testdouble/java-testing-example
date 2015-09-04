@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import static com.conway.util.Functional.*;
 import com.conway.values.Coordinates;
 import com.conway.values.MutableWorld;
 import com.conway.values.Outcome;
@@ -23,8 +24,8 @@ public class ReplacesWorld {
     while (!pointsToProcess.isEmpty() && !timeLimit.isTimeUp()) {
       Point point = pointsToProcess.remove();
       Outcome outcome = replacesCell.replace(oldWorld, point.coordinates);
-      pointsToProcess.addAll(outcome.neighbors);
       newWorld.set(point.coordinates, outcome.nextContents);
+      pointsToProcess.addAll(filter(outcome.neighbors, p -> newWorld.notYetSet(p.coordinates)));
     }
     return newWorld;
   }

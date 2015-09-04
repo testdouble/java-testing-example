@@ -10,7 +10,6 @@ import com.conway.values.World;
 public class GathersNeighbors {
 
   public Collection<Point> gather(World world, Coordinates coordinates) {
-    
     return Arrays.asList(
         new Point(world.at(coordinates.topLeft()), coordinates.topLeft()),
         new Point(world.at(coordinates.topCenter()), coordinates.topCenter()),
