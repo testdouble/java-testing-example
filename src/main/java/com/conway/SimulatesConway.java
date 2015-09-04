@@ -14,6 +14,7 @@ public class SimulatesConway {
       outputsWorld.output(world);
       world = replacesWorld.replace(world, timeLimit);
     }
+    outputsWorld.output(world);
   }
 
 }

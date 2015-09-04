@@ -31,11 +31,11 @@ public class SimulatesConwayTest {
   ReplacesWorld replacesWorld;
 
   @Test
-  public void testOneRound() {
+  public void testZeroRounds() {
     World seedWorld = new MutableWorld();
     when(generatesSeedWorld.generate()).thenReturn(seedWorld );
     
-    subject.simulate(1, 1337);
+    subject.simulate(0, 1337);
     
     verify(outputsWorld).output(seedWorld);
   }
@@ -47,10 +47,13 @@ public class SimulatesConwayTest {
     when(generatesSeedWorld.generate()).thenReturn(seedWorld );
     World world2 = new MutableWorld();
     when(replacesWorld.replace(seedWorld, timeLimit)).thenReturn(world2);
+    World world3 = new MutableWorld();
+    when(replacesWorld.replace(world2, timeLimit)).thenReturn(world3);
     
     subject.simulate(2, timeLimit);
     
     verify(outputsWorld).output(seedWorld);
     verify(outputsWorld).output(world2);
+    verify(outputsWorld).output(world3);
   }
 }
