@@ -1,7 +1,8 @@
 package com.conway;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import com.conway.values.Coordinates;
 import com.conway.values.Outcome;
@@ -13,19 +14,22 @@ public class ReplacesWorld {
 
   KeepsTime keepsTime;
   ReplacesCell replacesCell;
-  
+
   public World replace(World oldWorld, int timeLimitInMs) {
     MutableWorld newWorld = new MutableWorld();
     TimeLimit timeLimit = keepsTime.keep(timeLimitInMs);
-    
-    Coordinates coordinates = new Coordinates(0, 0);    
-    
-    while(timeLimit.isTimeUp() == false) {
-      Outcome outcome = replacesCell.replace(oldWorld, coordinates);
-      newWorld.set(coordinates, outcome.nextContents);
-      
+    Queue<Point> pointsToProcess = new LinkedList<Point>(Arrays.asList(origin(oldWorld)));
+    while (!pointsToProcess.isEmpty() && !timeLimit.isTimeUp()) {
+      Point point = pointsToProcess.remove();
+      Outcome outcome = replacesCell.replace(oldWorld, point.coordinates);
+      pointsToProcess.addAll(outcome.neighbors);
+      newWorld.set(point.coordinates, outcome.nextContents);
     }
     return newWorld;
+  }
+
+  private Point origin(World world) {
+    return new Point(world.at(new Coordinates(0, 0)), new Coordinates(0, 0));
   }
 
 }
