@@ -9,6 +9,9 @@ import org.mockito.Mockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import com.conway.values.World;
+
 import org.junit.runner.RunWith;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -28,7 +31,7 @@ public class SimulatesConwayTest {
 
   @Test
   public void testOneRound() {
-    World seedWorld = new World();
+    World seedWorld = new MutableWorld();
     when(generatesSeedWorld.generate()).thenReturn(seedWorld );
     
     subject.simulate(1, 1337);
@@ -39,9 +42,9 @@ public class SimulatesConwayTest {
   @Test
   public void testTwoRounds() {
     int timeLimit = 1337;
-    World seedWorld = new World();
+    World seedWorld = new MutableWorld();
     when(generatesSeedWorld.generate()).thenReturn(seedWorld );
-    World world2 = new World();
+    World world2 = new MutableWorld();
     when(replacesWorld.replace(seedWorld, timeLimit)).thenReturn(world2);
     
     subject.simulate(2, timeLimit);

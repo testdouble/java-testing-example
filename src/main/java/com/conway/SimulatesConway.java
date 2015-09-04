@@ -1,5 +1,7 @@
 package com.conway;
 
+import com.conway.values.World;
+
 public class SimulatesConway {
 
   GeneratesSeedWorld generatesSeedWorld = new GeneratesSeedWorld();
