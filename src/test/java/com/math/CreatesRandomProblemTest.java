@@ -1,15 +1,14 @@
 package com.math;
 
-import org.junit.*;
-import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
-import static org.mockito.Matchers.*;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-import org.mockito.Mockito;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.junit.runner.RunWith;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CreatesRandomProblemTest {

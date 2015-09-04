@@ -24,7 +24,7 @@ public class GreetsPeopleTest {
 
   @Test
   public void greetsNullPeople() {
-    String result = subject.greet(null);
+    String result = subject.greet((String)null);
 
     assertThat(result, is("Hello, my friend."));
   }
