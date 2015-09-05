@@ -37,11 +37,11 @@ public class OutputsWorldTest {
     Boundaries boundaries = new Boundaries(8,9,minY,maxY);
     when(findsWorldBoundaries.find(world)).thenReturn(boundaries);
     List<Contents> line1 = Arrays.asList(new Contents());
-    when(gathersLineOfContents.gather(world, minY, 8, 9)).thenReturn(line1);
+    when(gathersLineOfContents.gather(world, 8, 9, minY)).thenReturn(line1);
     List<Contents> line2 = Arrays.asList(new Contents());
-    when(gathersLineOfContents.gather(world, minY + 1, 8, 9)).thenReturn(line2);
+    when(gathersLineOfContents.gather(world, 8, 9, minY + 1)).thenReturn(line2);
     List<Contents> line3 = Arrays.asList(new Contents());
-    when(gathersLineOfContents.gather(world, maxY, 8, 9)).thenReturn(line3);
+    when(gathersLineOfContents.gather(world, 8, 9, maxY)).thenReturn(line3);
 
     subject.output(world);
     

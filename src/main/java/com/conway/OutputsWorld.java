@@ -17,7 +17,7 @@ public class OutputsWorld {
     for(int y=boundaries.maxY;y >= boundaries.minY;y--) {
       printsLine.print(
           gathersLineOfContents.gather(
-              world, y, boundaries.minX, boundaries.maxX));
+              world, boundaries.minX, boundaries.maxX, y));
     }
   }
 
