@@ -12,11 +12,11 @@ public class FindsWorldBoundaries {
   public Boundaries find(World world) {
     Collection<Coordinates> coords = world.allCoordinates();
     
-    return new Boundaries(
-      min(map(coords, (c) -> c.x), (x1,x2) -> x1.compareTo(x2)),
-      max(map(coords, (c) -> c.x), (x1,x2) -> x1.compareTo(x2)),
-      min(map(coords, (c) -> c.y), (y1,y2) -> y1.compareTo(y2)),
-      max(map(coords, (c) -> c.y), (y1,y2) -> y1.compareTo(y2))
+    return new Boundaries(      
+      min(coords, (c1,c2) -> c1.x.compareTo(c2.x)).x,
+      max(coords, (c1,c2) -> c1.x.compareTo(c2.x)).x,
+      min(coords, (c1,c2) -> c1.y.compareTo(c2.y)).y,
+      max(coords, (c1,c2) -> c1.y.compareTo(c2.y)).y
     );
   }
 

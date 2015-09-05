@@ -1,7 +1,7 @@
 package com.conway.values;
 
 public class Coordinates {
-  public int x,y;
+  public Integer x,y;
   
   public Coordinates(int x, int y) {
     this.x = x;
