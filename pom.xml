@@ -8,35 +8,11 @@
 	<packaging>jar</packaging>
 
 	<name>app</name>
-	<url>http://maven.apache.org</url>
+	<url>http://example.com</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
-				<executions>
-					<execution>
-						<phase>test</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>testem</executable>
-							<arguments>
-								<argument>ci</argument>
-							</arguments>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 	<dependencies>
 		<dependency>
