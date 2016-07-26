@@ -23,7 +23,7 @@ Or download a ZIP of master [manually](https://github.com/testdouble/java-junit-
 
 # Verify installation
 
-You can verify the project builds correctly from your IDE or from the command 
+You can verify the project builds correctly from your IDE or from the command
 line.
 
 ## CLI
@@ -33,11 +33,11 @@ Open a command prompt and verify that all needed bins are on your path and up to
 ```
 $ java -version
 # ^ should be at least 1.6
-$ mvn -v 
+$ mvn -v
 # ^ should be at least 3.0.0
 ```
 
-Finally, verify that `mvn install` succeeds. 
+Finally, verify that `mvn install` succeeds.
 
 You should see output like the following:
 
@@ -92,19 +92,18 @@ You should see a progress bar as the project is imported:
 
 <img width="518" alt="screen shot 2016-07-26 at 8 56 02 am" src="https://cloud.githubusercontent.com/assets/79303/17138701/82969a66-530f-11e6-9a9b-ddee2ae4dadd.png">
 
-Once the project is imported, right-click the project, then choose Run As -> 
+Once the project is imported, right-click the project, then choose Run As ->
 Maven install:
 
 <img width="801" alt="screen shot 2016-07-26 at 8 57 43 am" src="https://cloud.githubusercontent.com/assets/79303/17138713/90b13034-530f-11e6-88e3-09d286520cd4.png">
 
-If everything has succeeded, you should see a successful build in Eclipse's 
+If everything has succeeded, you should see a successful build in Eclipse's
 console:
 
 <img width="773" alt="screen shot 2016-07-26 at 8 58 07 am" src="https://cloud.githubusercontent.com/assets/79303/17138742/b1306dd4-530f-11e6-94c4-d9d22305c9f1.png">
 
+# Continue set up
 
-# Add Eclipse Plugins
-
-# Change Eclipse Settings
-
-Verify [these settings changes](https://github.com/testdouble/contributing-tests/wiki/JUnit#settings) to Eclipse
+Once you've verified you have the project working, continue configuring your
+environment to start work as described [in this wiki
+page](https://github.com/testdouble/contributing-tests/wiki/Training2-Set-up-Machines#java)
