@@ -6,12 +6,12 @@ Clone the repo:
 
 Git:
 ```
-$ git clone git@github.com:searls/junit-mocha-example.git
+$ git clone git@github.com:testdouble/java-junit-example.git
 ```
 
 Svn:
 ```
-$ svn co https://github.com/searls/junit-mocha-example
+$ svn co https://github.com/testdouble/java-junit-example
 ```
 
 Or download a ZIP of master [manually](https://github.com/testdouble/java-junit-example/archive/master.zip) and expand the contents someplace on your system
