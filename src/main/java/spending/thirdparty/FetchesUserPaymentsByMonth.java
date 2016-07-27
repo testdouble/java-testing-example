@@ -1,4 +1,4 @@
-package com.spending.thirdparty;
+package spending.thirdparty;
 
 import java.util.Set;
 

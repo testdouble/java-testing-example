@@ -1,7 +1,7 @@
-package com.acme.app;
+package example;
 
-import com.acme.app.values.CannedWalrusFood;
-import com.acme.app.values.Walrus;
+import example.values.CannedWalrusFood;
+import example.values.Walrus;
 
 public class FeedsWalrus {
 

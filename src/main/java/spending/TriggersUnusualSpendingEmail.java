@@ -1,4 +1,4 @@
-package com.spending;
+package spending;
 
 public class TriggersUnusualSpendingEmail {
 

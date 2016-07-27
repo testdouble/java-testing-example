@@ -1,6 +1,10 @@
-package com.acme.app.values;
+package example.values;
 
 import org.junit.*;
+
+import example.values.Walrus;
+import example.values.WalrusFood;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 

@@ -1,4 +1,4 @@
-package com.acme.app.values;
+package example.values;
 
 public class WalrusFood {
 

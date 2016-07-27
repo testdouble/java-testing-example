@@ -1,4 +1,4 @@
-package com.acme.app;
+package example;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
@@ -10,9 +10,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.acme.app.values.CannedWalrusFood;
-import com.acme.app.values.Walrus;
-import com.acme.app.values.WalrusFood;
+import example.FeedsWalrus;
+import example.OpensCan;
+import example.values.CannedWalrusFood;
+import example.values.Walrus;
+import example.values.WalrusFood;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FeedsWalrusTest {
