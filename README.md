@@ -6,20 +6,21 @@ Clone the repo:
 
 Git:
 ```
-$ git clone git@github.com:testdouble/java-junit-example.git
+$ git clone git@github.com:testdouble/java-testing-example.git
 ```
 
 Svn:
 ```
-$ svn co https://github.com/testdouble/java-junit-example
+$ svn co https://github.com/testdouble/java-testing-example
 ```
 
-Or download a ZIP of master [manually](https://github.com/testdouble/java-junit-example/archive/master.zip) and expand the contents someplace on your system
+Or download a ZIP of master [manually](https://github.com/testdouble/java-testing-example/archive/master.zip) and expand the contents someplace on your system
 
 # Prerequisites
 
 * Have a JDK installed
 * Have Maven installed and available on your PATH or IDE
+* Have Firefox installed
 
 # Verify installation
 
@@ -42,7 +43,7 @@ Finally, verify that `mvn install` succeeds.
 You should see output like the following:
 
 ```
-$ cd java-junit-example
+$ cd java-testing-example
 $ mvn install
 # ...
 
@@ -78,15 +79,15 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 
 First, right-click the Project Explorer and select Import -> Import:
 
-<img width="594" alt="screen shot 2016-07-26 at 8 54 50 am" src="https://cloud.githubusercontent.com/assets/79303/17138610/1836e554-530f-11e6-9bc0-e3d830b6216a.png">
+<img width="497" alt="screen shot 2016-07-28 at 8 12 09 am" src="https://cloud.githubusercontent.com/assets/79303/17212149/9ef3612a-549b-11e6-882f-981f86677f38.png">
 
 Next, choose Maven -> Existing Maven Projects:
 
-<img width="539" alt="screen shot 2016-07-26 at 8 55 08 am" src="https://cloud.githubusercontent.com/assets/79303/17138636/38b1c7e0-530f-11e6-8b76-43d3561bd905.png">
+<img width="531" alt="screen shot 2016-07-28 at 8 12 24 am" src="https://cloud.githubusercontent.com/assets/79303/17212171/ae1339c8-549b-11e6-9a72-c8ca0b5bed34.png">
 
 Tell Eclipse where you've downloaded or checked out the project and click Finish:
 
-<img width="649" alt="screen shot 2016-07-26 at 8 55 46 am" src="https://cloud.githubusercontent.com/assets/79303/17138678/697dfa56-530f-11e6-9bd8-18cfcc32cbd5.png">
+<img width="655" alt="screen shot 2016-07-28 at 8 12 49 am" src="https://cloud.githubusercontent.com/assets/79303/17212185/b62d09b8-549b-11e6-97fa-f4ae226cfdef.png">
 
 You should see a progress bar as the project is imported:
 
@@ -95,12 +96,12 @@ You should see a progress bar as the project is imported:
 Once the project is imported, right-click the project, then choose Run As ->
 Maven install:
 
-<img width="801" alt="screen shot 2016-07-26 at 8 57 43 am" src="https://cloud.githubusercontent.com/assets/79303/17138713/90b13034-530f-11e6-88e3-09d286520cd4.png">
+<img width="703" alt="screen shot 2016-07-28 at 8 17 57 am" src="https://cloud.githubusercontent.com/assets/79303/17212230/fff899f4-549b-11e6-954d-8159938721af.png">
 
 If everything has succeeded, you should see a successful build in Eclipse's
 console:
 
-<img width="773" alt="screen shot 2016-07-26 at 8 58 07 am" src="https://cloud.githubusercontent.com/assets/79303/17138742/b1306dd4-530f-11e6-94c4-d9d22305c9f1.png">
+<img width="905" alt="screen shot 2016-07-28 at 8 19 06 am" src="https://cloud.githubusercontent.com/assets/79303/17212238/05d6ac4e-549c-11e6-9e38-5444885f9e3b.png">
 
 # Continue set up
 
