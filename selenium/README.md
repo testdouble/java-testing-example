@@ -75,7 +75,9 @@ removing some of the "selenese" from the story the tests are trying to tell.
 
 The primary exercise in this project is to attempt to write some tests against
 a simple interface with non-deterministic behavior against this
-[tic-tac-toe](http://tic-tac-toe-kb.herokuapp.com) game.
+[tic-tac-toe](http://tic-tac-toe-kb.herokuapp.com) game:
+
+http://tic-tac-toe-kb.herokuapp.com
 
 The interface is complex enough to warrant some helpers (perhaps organized as
 [Page Objects](http://martinfowler.com/bliki/PageObject.html), but any tests will
