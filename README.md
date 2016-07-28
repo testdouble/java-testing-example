@@ -1,6 +1,9 @@
-Just a sample project.
+# java-testing-example
 
-# Instructions
+This is the Java repository we'll work out of during this [training
+event](https://github.com/testdouble/contributing-tests/wiki/5-Day-Training-Agenda).
+
+## Instructions
 
 Clone the repo:
 
@@ -16,18 +19,18 @@ $ svn co https://github.com/testdouble/java-testing-example
 
 Or download a ZIP of master [manually](https://github.com/testdouble/java-testing-example/archive/master.zip) and expand the contents someplace on your system
 
-# Prerequisites
+## Prerequisites
 
 * Have a JDK installed
 * Have Maven installed and available on your PATH or IDE
 * Have Firefox installed
 
-# Verify installation
+## Verify installation
 
 You can verify the project builds correctly from your IDE or from the command
 line.
 
-## CLI
+### CLI
 
 Open a command prompt and verify that all needed bins are on your path and up to date:
 
@@ -75,7 +78,7 @@ Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 ```
 
-## Eclipse
+### Eclipse
 
 First, right-click the Project Explorer and select Import -> Import:
 
@@ -103,7 +106,7 @@ console:
 
 <img width="905" alt="screen shot 2016-07-28 at 8 19 06 am" src="https://cloud.githubusercontent.com/assets/79303/17212238/05d6ac4e-549c-11e6-9e38-5444885f9e3b.png">
 
-# Continue set up
+## Continue set up
 
 Once you've verified you have the project working, continue configuring your
 environment to start work as described [in this wiki
