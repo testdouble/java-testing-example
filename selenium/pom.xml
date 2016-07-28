@@ -8,9 +8,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>todo-app</artifactId>
+	<artifactId>selenium</artifactId>
 	<packaging>jar</packaging>
-	<name>todo-app</name>
+	<name>selenium</name>
 
 	<dependencies>
 		<dependency>
@@ -52,7 +52,7 @@
 			<artifactId>selenium-ie-driver</artifactId>
 			<version>RELEASE</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
