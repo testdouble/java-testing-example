@@ -1,11 +1,18 @@
-package spending.thirdparty;
+package spending;
 
 import java.util.Set;
 
-public class FetchesUserPaymentsByMonth {
+public class FetchesUserPaymentsByMonth<T> {
 
-  public static Set<Object> fetch(long userId, int year, int month) {
-    throw new RuntimeException("Data access will be implemented by a different team later");
-  }
-  
+	public static <T> FetchesUserPaymentsByMonth<T> getInstance() {
+		return new FetchesUserPaymentsByMonth<T>();
+	}
+
+	private FetchesUserPaymentsByMonth() {
+	}
+
+	public Set<T> fetch(long userId, int year, int month) {
+		throw new RuntimeException("Data access will be implemented by a different team later");
+	}
+
 }

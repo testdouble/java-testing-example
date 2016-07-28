@@ -15,6 +15,7 @@
           <module>example-cucumber</module>
           <module>bank-ocr</module>
           <module>todo-app</module>
+          <module>gilded-rose</module>
           <module>game-of-life</module>
 	</modules>
 </project>

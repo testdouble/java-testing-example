@@ -16,7 +16,7 @@ public class Browser {
 
 	public static final int DEFAULT_TIMEOUT = 5;
 	public static WebDriver browser;
-	
+
 	private static final String browserName;
 
 	static {
@@ -48,7 +48,7 @@ public class Browser {
 	}
 
 	public static WebElement anyImmediate(String css) {
-		return anyImmediate(browser.findElement(By.cssSelector("html")), css);		
+		return anyImmediate(browser.findElement(By.cssSelector("html")), css);
 	}
 
 	public static WebElement anyImmediate(WebElement parent, String css) {
@@ -57,7 +57,7 @@ public class Browser {
 		browser.manage().timeouts().implicitlyWait(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 		return el;
 	}
-	
+
 	private static WebDriver createDriver() {
 		if (browserName.equals("firefox")) {
 			return new FirefoxDriver();

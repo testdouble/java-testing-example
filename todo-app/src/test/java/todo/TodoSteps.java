@@ -1,8 +1,8 @@
-package selenium;
+package todo;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
-import static selenium.TodoUtil.*;
+import static todo.TodoUtil.*;
 
 import org.openqa.selenium.WebDriver;
 

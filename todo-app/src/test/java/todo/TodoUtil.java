@@ -1,4 +1,4 @@
-package selenium;
+package todo;
 
 import static support.Browser.*;
 
@@ -16,7 +16,7 @@ public class TodoUtil {
 
 	public static WebElement todoAt(int index, boolean immediate) {
 		String selector = "#todo-list li:nth-child(" + (index + 1) + ")";
-		return immediate ? anyImmediate(selector) : any(selector); 
+		return immediate ? anyImmediate(selector) : any(selector);
 	}
 
 	public static void markTodoDone(WebElement todo) {

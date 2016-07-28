@@ -21,7 +21,7 @@ public class FeedsWalrusTest {
 
 	@InjectMocks
 	FeedsWalrus subject;
-	
+
 	@Mock
 	OpensCan opensCan;
 
@@ -31,9 +31,9 @@ public class FeedsWalrusTest {
 		CannedWalrusFood can = new CannedWalrusFood();
 		WalrusFood food = new WalrusFood();
 		when(opensCan.open(can)).thenReturn(food);
-		
+
 		subject.feed(gary, can);
-		
+
 		assertThat(gary.hasEaten(food), is(true));
 	}
 }

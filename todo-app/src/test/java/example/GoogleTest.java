@@ -1,4 +1,4 @@
-package selenium;
+package example;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
@@ -10,12 +10,12 @@ import org.openqa.selenium.WebElement;
 
 import support.Browser;
 
-public class SimpleTest {
+public class GoogleTest {
 
 	WebDriver driver = Browser.launch();
 	
 	@Test
-	public void sometest() {		
+	public void googleForCheese() {		
 		driver.get("https://www.google.com");
 		WebElement element = driver.findElement(By.name("q"));
 		element.sendKeys("Cheese!");
@@ -30,6 +30,4 @@ public class SimpleTest {
 	public void quitBrowser() {
 		driver.quit();
 	}
-
-	
 }

@@ -16,9 +16,9 @@ public class OpensCanTest {
 	public void test() {
 		WalrusFood food = new WalrusFood();
 		CannedWalrusFood can = new CannedWalrusFood(food);
-		
+
 		WalrusFood result = subject.open(can);
-		
+
 		assertThat(result, is(food));
 	}
 }

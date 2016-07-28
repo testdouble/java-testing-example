@@ -6,7 +6,7 @@ import java.util.Set;
 public class Walrus {
 
 	private Set<WalrusFood> stomach = new HashSet<WalrusFood>();
-	
+
 	public Boolean hasEaten(WalrusFood food) {
 		return stomach.contains(food);
 	}
