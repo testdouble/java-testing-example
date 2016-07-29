@@ -110,4 +110,4 @@ console:
 
 Once you've verified you have the project working, continue configuring your
 environment to start work as described [in this wiki
-page](https://github.com/testdouble/contributing-tests/wiki/Training2-Set-up-Machines#java)
+page](https://github.com/testdouble/contributing-tests/wiki/Environment-Setup#java)
