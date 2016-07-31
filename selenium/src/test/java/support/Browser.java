@@ -1,5 +1,6 @@
 package support;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +10,9 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class Browser {
@@ -62,9 +65,14 @@ public class Browser {
 		if (browserName.equals("firefox")) {
 			try {
 				return new FirefoxDriver();
-			} catch (Exception e) {
-				System.setProperty("webdriver.gecko.driver", "bin/geckodriver.exe");
-				return new FirefoxDriver();
+			} catch (RuntimeException e) {
+				String path;
+				if (System.getProperty("os.name").contains("win")) {
+					path = "bin/FirefoxPortable/App/Firefox/firefox.exe";
+				} else {
+					path = "bin/Firefox.app/Contents/MacOS/firefox";
+				}
+				return new FirefoxDriver(new FirefoxBinary(new File(path)), new FirefoxProfile());
 			}
 		} else if (browserName.equals("chrome")) {
 			try {
