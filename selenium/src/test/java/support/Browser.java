@@ -60,11 +60,26 @@ public class Browser {
 
 	private static WebDriver createDriver() {
 		if (browserName.equals("firefox")) {
-			return new FirefoxDriver();
+			try {
+				return new FirefoxDriver();
+			} catch (Exception e) {
+				System.setProperty("webdriver.gecko.driver", "bin/geckodriver.exe");
+				return new FirefoxDriver();
+			}
 		} else if (browserName.equals("chrome")) {
-			return new ChromeDriver();
+			try {
+				return new ChromeDriver();
+			} catch (Exception e) {
+				System.setProperty("webdriver.chrome.driver", "bin/chromedriver.exe");
+				return new ChromeDriver();
+			}
 		} else if (browserName.equals("msie")) {
-			return new InternetExplorerDriver();
+			try {
+				return new InternetExplorerDriver();
+			} catch (Exception e) {
+				System.setProperty("webdriver.ie.driver", "bin/IEDriverServer.exe");
+				return new InternetExplorerDriver();
+			}
 		} else {
 			throw new RuntimeException("Unrecognized system property 'browser': " + browserName);
 		}
