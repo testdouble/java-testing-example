@@ -5,9 +5,9 @@ Feature: Bank OCR Kata
   Scenario: read account numbers
     Given I have an account file with contents:
       """
-        _  _     _  _  _  _  _
-      | _| _||_||_ |_   ||_||_|
-      ||_  _|  | _||_|  ||_| _|
+          _  _     _  _  _  _  _
+        | _| _||_||_ |_   ||_||_|
+        ||_  _|  | _||_|  ||_| _|
 
       """
     When I parse the file
