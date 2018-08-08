@@ -18,4 +18,16 @@
           <module>gilded-rose</module>
           <module>game-of-life</module>
 	</modules>
+	<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>NPULA-0WUJ7-releases</name>
+        <url>http://localhost:8040/artifactory/nar</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>NPULA-0WUJ7-snapshots</name>
+        <url>http://localhost:8040/artifactory/nar</url>
+    </snapshotRepository>
+</distributionManagement>
 </project>
