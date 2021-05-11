@@ -17,7 +17,7 @@ Svn:
 $ svn co https://github.com/testdouble/java-testing-example
 ```
 
-Or download a ZIP of master [manually](https://github.com/testdouble/java-testing-example/archive/master.zip) and expand the contents someplace on your system
+Or download a ZIP of main [manually](https://github.com/testdouble/java-testing-example/archive/main.zip) and expand the contents someplace on your system
 
 ## Prerequisites
 
